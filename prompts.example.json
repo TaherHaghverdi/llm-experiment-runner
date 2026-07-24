@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "prompts": [
+    {
+      "id": "capture-product-demo",
+      "group": "create",
+      "text": "What tools should I consider if my team needs to record and share polished product demos without a video production team?"
+    },
+    {
+      "id": "host-customer-videos",
+      "group": "host",
+      "text": "What are good options for hosting customer-facing videos with analytics and control over the viewing experience?"
+    },
+    {
+      "id": "personalized-outreach",
+      "group": "sell",
+      "text": "What tools help a B2B team add personalized video to outbound messages?"
+    }
+  ]
+}

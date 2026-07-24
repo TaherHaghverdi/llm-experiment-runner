@@ -1,0 +1,64 @@
+{
+  "schema_version": "1.0",
+  "experiment": {
+    "name": "example-positioning-audit",
+    "output_dir": "runs",
+    "repetitions": 2
+  },
+  "prompts_file": "prompts.example.json",
+  "conditions": [
+    "plain",
+    "web"
+  ],
+  "models": [
+    {
+      "id": "openai-example",
+      "provider": "openai",
+      "model": "replace-with-current-openai-model-id",
+      "api_key_env": "OPENAI_API_KEY",
+      "conditions": [
+        "plain",
+        "web"
+      ]
+    },
+    {
+      "id": "anthropic-example",
+      "provider": "anthropic",
+      "model": "replace-with-current-anthropic-model-id",
+      "api_key_env": "ANTHROPIC_API_KEY",
+      "conditions": [
+        "plain",
+        "web"
+      ]
+    },
+    {
+      "id": "google-example",
+      "provider": "google",
+      "model": "replace-with-current-google-model-id",
+      "api_key_env": "GOOGLE_API_KEY",
+      "conditions": [
+        "plain",
+        "web"
+      ]
+    }
+  ],
+  "request": {
+    "system_prompt": "",
+    "max_output_tokens": 1200,
+    "temperature": null,
+    "timeout_seconds": 90,
+    "max_attempts": 3,
+    "retry_backoff_seconds": 1.5,
+    "concurrency": 3,
+    "abort_after_failures": 5,
+    "anthropic_web_search_max_uses": 3
+  },
+  "estimate": {
+    "input_tokens_per_call": 150,
+    "output_tokens_per_call": 700,
+    "web_searches_per_web_call": 1
+  },
+  "budget": {
+    "max_estimated_usd": null
+  }
+}

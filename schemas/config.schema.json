@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/TaherHaghverdi/llm-positioning-runner/schemas/config.schema.json",
+  "title": "LLM Positioning Runner configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "experiment",
+    "prompts_file",
+    "conditions",
+    "models",
+    "request",
+    "estimate",
+    "budget"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "experiment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "output_dir",
+        "repetitions"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "output_dir": {
+          "type": "string",
+          "minLength": 1
+        },
+        "repetitions": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "prompts_file": {
+      "type": "string",
+      "minLength": 1
+    },
+    "conditions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "plain",
+          "web"
+        ]
+      }
+    },
+    "models": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "provider",
+          "model",
+          "conditions"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "provider": {
+            "enum": [
+              "openai",
+              "anthropic",
+              "google"
+            ]
+          },
+          "model": {
+            "type": "string",
+            "minLength": 1
+          },
+          "api_key_env": {
+            "type": "string",
+            "minLength": 1
+          },
+          "base_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "conditions": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "enum": [
+                "plain",
+                "web"
+              ]
+            }
+          },
+          "pricing": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "input_usd_per_million_tokens",
+              "output_usd_per_million_tokens"
+            ],
+            "properties": {
+              "input_usd_per_million_tokens": {
+                "type": "number",
+                "minimum": 0
+              },
+              "output_usd_per_million_tokens": {
+                "type": "number",
+                "minimum": 0
+              },
+              "web_search_usd_per_1000_requests": {
+                "type": "number",
+                "minimum": 0
+              },
+              "as_of": {
+                "type": "string",
+                "minLength": 1
+              },
+              "source_url": {
+                "type": "string",
+                "format": "uri"
+              }
+            }
+          }
+        }
+      }
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "system_prompt",
+        "max_output_tokens",
+        "temperature",
+        "timeout_seconds",
+        "max_attempts",
+        "retry_backoff_seconds",
+        "concurrency",
+        "abort_after_failures",
+        "anthropic_web_search_max_uses"
+      ],
+      "properties": {
+        "system_prompt": {
+          "type": "string"
+        },
+        "max_output_tokens": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "temperature": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "timeout_seconds": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "max_attempts": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "retry_backoff_seconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "concurrency": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "abort_after_failures": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "anthropic_web_search_max_uses": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "estimate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_tokens_per_call",
+        "output_tokens_per_call",
+        "web_searches_per_web_call"
+      ],
+      "properties": {
+        "input_tokens_per_call": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "output_tokens_per_call": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "web_searches_per_web_call": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "budget": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_estimated_usd"
+      ],
+      "properties": {
+        "max_estimated_usd": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    }
+  }
+}
