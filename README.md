@@ -24,7 +24,9 @@ how the models position the product.
 - Verifies completeness against the original manifest.
 - Keeps API credentials in a local `.env` file that Git ignores.
 
-The API benchmark is a reproducible proxy. Consumer products such as ChatGPT, Claude, and Gemini can add different system instructions, memory, search behavior, and product features. Periodically compare a small sample with the consumer experiences your audience actually uses.
+An API run is a reproducible proxy. Consumer products such as ChatGPT, Claude, and Gemini can
+add different system instructions, memory, search behavior, and product features. When the
+consumer experience matters to your experiment, periodically compare a small sample there.
 
 ## Requirements
 
