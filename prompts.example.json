@@ -2,19 +2,19 @@
   "schema_version": "1.0",
   "prompts": [
     {
-      "id": "capture-product-demo",
-      "group": "create",
-      "text": "What tools should I consider if my team needs to record and share polished product demos without a video production team?"
+      "id": "four-day-workweek",
+      "group": "workplace",
+      "text": "What are the main benefits and trade-offs of a four-day workweek for knowledge teams?"
     },
     {
-      "id": "host-customer-videos",
-      "group": "host",
-      "text": "What are good options for hosting customer-facing videos with analytics and control over the viewing experience?"
+      "id": "remote-work-productivity",
+      "group": "workplace",
+      "text": "How do organizations typically measure whether remote work affects productivity?"
     },
     {
-      "id": "personalized-outreach",
-      "group": "sell",
-      "text": "What tools help a B2B team add personalized video to outbound messages?"
+      "id": "ai-code-review",
+      "group": "software",
+      "text": "What risks should a team consider before using AI for code review?"
     }
   ]
 }

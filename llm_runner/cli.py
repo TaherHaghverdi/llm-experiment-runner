@@ -23,8 +23,8 @@ from .providers import ProviderError, list_models
 
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
-        prog="llm-positioning",
-        description="Run and verify multi-provider LLM positioning benchmarks.",
+        prog="llm-experiment",
+        description="Run and verify repeatable multi-provider LLM experiments.",
     )
     subparsers = parser.add_subparsers(dest="command", required=True)
 

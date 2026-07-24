@@ -1,8 +1,17 @@
-# LLM Positioning Runner
+# LLM Experiment Runner
 
-Run the same buyer questions across multiple model providers, with and without web search, and keep the raw answers in a traceable, resume-safe format.
+Run the same prompts across multiple model providers, with and without web search, and keep
+the raw answers in a traceable, resume-safe format.
 
-This project is intentionally narrow. It collects evidence; it does not decide what your questions should be or turn the answers into a strategy. Use the companion [LLM Positioning Audit skill](https://github.com/TaherHaghverdi/llm-positioning-audit) when you want a coding agent to research your space, propose an experiment, configure this runner, and analyze the result with you.
+The runner is intentionally generic. It collects evidence for repeatable LLM experiments; it
+does not decide what your prompts should be or what the answers mean. You can use it for
+research, recurring monitoring, cross-model comparisons, answer-stability tests, and other
+experiments built from a prompt set.
+
+For one opinionated use case, the companion
+[LLM Positioning Audit skill](https://github.com/TaherHaghverdi/llm-positioning-audit)
+researches a product's space, proposes an experiment, configures this runner, and analyzes
+how the models position the product.
 
 ## What it does
 
@@ -27,8 +36,8 @@ There are no runtime packages to install.
 ## Quick start
 
 ```bash
-git clone https://github.com/TaherHaghverdi/llm-positioning-runner.git
-cd llm-positioning-runner
+git clone https://github.com/TaherHaghverdi/llm-experiment-runner.git
+cd llm-experiment-runner
 
 cp .env.example .env
 cp config.example.json config.json
@@ -52,8 +61,8 @@ python3 -m llm_runner run --config config.json --env .env
 The runner prints the run directory when it starts. Use that path to inspect or verify the run:
 
 ```bash
-python3 -m llm_runner status runs/2026-07-23-example-positioning-audit-120000
-python3 -m llm_runner verify runs/2026-07-23-example-positioning-audit-120000
+python3 -m llm_runner status runs/2026-07-24-example-llm-experiment-120000
+python3 -m llm_runner verify runs/2026-07-24-example-llm-experiment-120000
 ```
 
 If a run stops, fix the cause and resume it:
@@ -62,7 +71,7 @@ If a run stops, fix the cause and resume it:
 python3 -m llm_runner run \
   --config config.json \
   --env .env \
-  --resume runs/2026-07-23-example-positioning-audit-120000
+  --resume runs/2026-07-24-example-llm-experiment-120000
 ```
 
 Successful jobs are skipped. Failed and unfinished jobs are attempted again.
@@ -80,7 +89,9 @@ Successful jobs are skipped. Failed and unfinished jobs are attempted again.
 
 Search tools can be billed separately from model tokens. Pricing changes, so treat every price in a config as dated input rather than built-in truth. Omit pricing when you do not know it; the plan will mark its total incomplete. The runner includes the pricing snapshot in the run manifest.
 
-The prompt file follows `schemas/prompts.schema.json`. Group prompts by buyer need or product surface so the later analysis can distinguish a broad positioning gap from one weak use case.
+The prompt file follows `schemas/prompts.schema.json`. Use the `group` field for whatever
+dimensions your later analysis needs to compare, such as topics, audiences, tasks, or product
+surfaces.
 
 ## Model discovery
 

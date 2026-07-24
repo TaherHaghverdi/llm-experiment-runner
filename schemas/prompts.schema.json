@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/TaherHaghverdi/llm-positioning-runner/schemas/prompts.schema.json",
-  "title": "LLM Positioning Runner prompt set",
+  "$id": "https://github.com/TaherHaghverdi/llm-experiment-runner/schemas/prompts.schema.json",
+  "title": "LLM Experiment Runner prompt set",
   "type": "object",
   "additionalProperties": false,
   "required": [
